@@ -24,9 +24,7 @@ export default function App({ $target }) {
       photos: this.state.photos,
       isLoading: this.state.isLoading,
     },
-    onScrollEnded: async () => {
-      await fetchPhotos(); // {}없이 써도 되는지?
-    },
+    onScrollEnded: async () => await fetchPhotos(), // {}없이 써도 되는지?
   });
 
   this.setState = (nextState) => {
@@ -48,6 +46,7 @@ export default function App({ $target }) {
 
     this.setState({
       ...this.state,
+      isLoading: false,
       photos: [...this.state.photos, ...photos],
       page: this.state.page + 1,
     });
